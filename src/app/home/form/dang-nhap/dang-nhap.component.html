@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 mx-auto">
+      <!-- <mat-checkbox>Check me!</mat-checkbox> -->
+      <form #formDangNhap = "ngForm"> <!--Thay thế cho lấy inpupt bằng cách # ở từng ô input và nhận #.value -->  <!-- (ngSubmit)="DangKy( formDangKy.value ) -->
+        <div class="form-group">
+          <label>Tài khoản:</label> 
+          <input type="text" class="form-control" minlength="7" maxlength="15" #taiKhoan = "ngModel"   name = "taiKhoan" ngModel  required>
+
+         
+          <div *ngIf = "taiKhoan.errors && (taiKhoan.dirty || taiKhoan.touched)">
+
+
+            <div *ngIf = "taiKhoan.errors.required" class="alert alert-danger">
+              Tài khoản rỗng
+            </div>
+
+
+            <!-- Kiểm tra độ dài -->
+            <div *ngIf= "taiKhoan.errors.minlength || taiKhoan.errors.maxlength" class="alert alert-danger">
+              Độ dài phải từ 7 - 15 kí tự
+            </div>
+
+          </div>
+
+          
+       
+        </div>
+        <div class="form-group">
+          <label>Mật khẩu: </label>
+          <input type="password" class="form-control" #matKhau   name ="matKhau" ngModel>
+        </div>
+        
+   
+          <ng-container *ngIf ="alert">
+              <div class="alert alert-danger" [ngClass] = "{ 'background-Color' : trangThai}">
+                  {{alert}}
+              </div>
+          </ng-container>
+
+          
+
+
+        <button type="submit" class="btn btn-success" (click)="DangNhap( formDangNhap.value )" >Đăng Nhập</button>
+        <button type="submit" class="btn btn-danger"  >Cancel</button>
+
+        </form>
+
+    </div>
+  </div>
+</div>
+

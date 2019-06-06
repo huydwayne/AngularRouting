@@ -1,0 +1,50 @@
+<ng-container *ngIf=" phim!= null ">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <img [src]="phim.HinhAnh" alt="">
+      </div>
+
+      <div class="col-sm-6">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>Tên phim: </td>
+              <td> {{phim.TenPhim}} </td>
+            </tr>
+            <tr>
+              <td>Mô tả: </td>
+              <td> {{phim.MoTa}} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <td>Tên rạp</td>
+              <td>Ngày chiếu</td>
+              <td>Giờ chiếu</td>
+              <td>Giá vé</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor = "let item of phim.LichChieu">
+              <td> {{item.Rap.TenRap}} </td>
+              <td> {{item.NgayChieuGioChieu | date: "dd-MM-yyyy"}} </td>
+              <td> {{item.NgayChieuGioChieu | date: " hh:mm"}}  </td>
+              <td> {{item.GiaVe}} </td>
+              <td><button class="btn btn-success"(click)="muaVe(item.MaLichChieu)"> Mua vé </button></td>
+           </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+</ng-container>

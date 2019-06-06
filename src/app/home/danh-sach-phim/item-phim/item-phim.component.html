@@ -1,0 +1,13 @@
+<div class="card">
+  <img class="card-img-top" [src]="objPhim.HinhAnh" alt="">
+  <div class="card-body">
+      <h4 class="card-title">{{objPhim.TenPhim}}</h4>
+      <!-- CÁCH 1 TRUYỀN THAM SỐ LÊN URL -->
+      <!-- <a class="btn btn-primary" routerLink="/home/chi-tiet-phim/{{objPhim.MaPhim}}">Mua vé</a> -->
+
+      <!-- CÁCH 2 TRUYỀN NHIỀU THAM SỐ -->
+      <!-- <a class="btn btn-primary" [routerLink]="['/home/chi-tiet-phim']" [queryParams]="{maPhim: objPhim.MaPhim, tenPhim: objPhim.TenPhim}">Mua vé</a> -->
+
+      <button class="btn btn-primary" (click)="muaVe()">Mua vé</button>
+  </div>
+</div>

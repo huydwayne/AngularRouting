@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 mx-auto">
+      <!-- <mat-checkbox>Check me!</mat-checkbox> -->
+      <form #formDangKy = "ngForm"> <!--Thay thế cho lấy inpupt bằng cách # ở từng ô input và nhận #.value -->  <!-- (ngSubmit)="DangKy( formDangKy.value ) -->
+        <div class="form-group">
+          <label>Tài khoản:</label> 
+          <input type="text" class="form-control" minlength="7" maxlength="15" #taiKhoan = "ngModel"   name = "taiKhoan" ngModel  required>
+
+         
+          <div *ngIf = "taiKhoan.errors && (taiKhoan.dirty || taiKhoan.touched)">
+
+
+            <div *ngIf = "taiKhoan.errors.required" class="alert alert-danger">
+              Tài khoản rỗng
+            </div>
+
+
+            <!-- Kiểm tra độ dài -->
+            <div *ngIf= "taiKhoan.errors.minlength || taiKhoan.errors.maxlength" class="alert alert-danger">
+              Độ dài phải từ 7 - 15 kí tự
+            </div>
+
+          </div>
+
+          
+       
+        </div>
+        <div class="form-group">
+          <label>Mật khẩu: </label>
+          <input type="text" class="form-control" #matKhau   name ="matKhau" ngModel>
+        </div>
+        <div class="form-group">
+          <label>Email: </label>
+          <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control"  #email = "ngModel"    name ="email" ngModel required> 
+          <!-- Name để đưa value xuống DangKy() -->
+            <!-- Kiểm tra email rỗng -->
+            <div *ngIf = "email.errors && (email.dirty || email.touched)">
+              <div *ngIf = "email.errors.required" class="alert alert-danger"> 
+                Email rỗng
+              </div>
+
+              <!-- Kiểm tra định dạng email -->
+              <div *ngIf = "email.errors.pattern" class="alert alert-danger">
+                Email chưa đúng định dạng!
+              </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+          <label>Số điện thoại:</label>
+          <input type="text" class="form-control"    name ="soDT" ngModel>
+        </div>
+        <button type="submit" class="btn btn-success" (click)="DangKy( formDangKy.value )" >Đăng ký</button>
+        <button type="submit" class="btn btn-danger"  >Cancel</button>
+
+        </form>
+    </div>
+  </div>
+</div>
